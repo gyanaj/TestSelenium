@@ -15,7 +15,7 @@
 	</properties>
 
 	<build>
-		<!-- <pluginManagement> -->
+		<pluginManagement>
 		<plugins>
 			<!-- Compiler plug-in -->
 			<plugin>
@@ -131,7 +131,7 @@
 			</executions>
 		</plugin>
 		</plugins>
-		<!-- </pluginManagement> -->
+		 </pluginManagement> 
 	</build>
 
 	<dependencies>
