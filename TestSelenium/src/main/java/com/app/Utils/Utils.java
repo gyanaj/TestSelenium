@@ -2,6 +2,9 @@ package com.app.Utils;
 
 import java.util.concurrent.TimeUnit;
 
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -81,5 +84,20 @@ public class Utils {
 
 	public void navigateforward() {
 		driver.navigate().forward();
+	}
+
+	public void getScreenshot(String ImageN) {
+		File Image = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+		String ImageLocation = ".//TestSelenium//src/main//java//com//app//screenshot";
+		Calendar calender = Calendar.getInstance();
+		SimpleDateFormat format = new SimpleDateFormat("dd_mm_yyyy_hh_mm_ss");
+		String ActualImage = ImageLocation + ImageN + "_" + format.format(calender.getTime()) + ".jpg";
+		try {
+			FileUtils.copyFile(Image, new File(ActualImage));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 }

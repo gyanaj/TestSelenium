@@ -23,15 +23,20 @@ import com.relevantcodes.extentreports.LogStatus;
 
 public class TestBase extends Utils {
 
-	@Test
-	public void appInit() {
-		
+	public void reportcreate() {
 		Calendar calender = Calendar.getInstance();
 		SimpleDateFormat format = new SimpleDateFormat("dd_MM_yyyy_hh_mm_ss");
-		String SampleReport =  "TestReport"+ "_" + format.format(calender.getTime()) + ".html";
-		//ApplicationFilePath.report = new ExtentReports(".//Reports//TestReport.html");
-		ApplicationFilePath.report = new ExtentReports(".//Reports//"+SampleReport);
+		String SampleReport = "TestReport" + "_" + format.format(calender.getTime()) + ".html";
+		// ApplicationFilePath.report = new
+		// ExtentReports(".//Reports//TestReport.html");
+		ApplicationFilePath.report = new ExtentReports(".//Reports//" + SampleReport);
 
+	}
+
+	@Test
+	public void appInit() {
+
+		reportcreate();
 		ApplicationFilePath.logger = ApplicationFilePath.report.startTest("Verify Browser");
 		loadProperties();
 		selectBrowser(ApplicationFilePath.p.getProperty("app.browsertype"));
@@ -42,13 +47,7 @@ public class TestBase extends Utils {
 		waitforpageload(5);
 		driver.get(ApplicationFilePath.p.getProperty("app.url"));
 		ApplicationFilePath.logger.log(LogStatus.INFO, "Navigate to URL");
-		// End the test
-
-		//ApplicationFilePath.report.endTest(ApplicationFilePath.logger);
-
-		// Flush the data to report
-		//ApplicationFilePath.report.flush();
-
+		
 	}
 
 	public void loadProperties() {
@@ -75,6 +74,7 @@ public class TestBase extends Utils {
 			return driver.findElement(By.id(LocatorValue));
 		else if (LocatorKey.toLowerCase().equalsIgnoreCase("name"))
 			return driver.findElement(By.name(LocatorValue));
+		
 		else if (LocatorKey.toLowerCase().equalsIgnoreCase("className"))
 			return driver.findElement(By.className(LocatorValue));
 		else if (LocatorKey.toLowerCase().equalsIgnoreCase("linkText"))
@@ -105,8 +105,6 @@ public class TestBase extends Utils {
 		return action;
 	}
 
-	
-
 	@AfterTest
 	public void closeapp() {
 		driver.quit();
@@ -115,6 +113,4 @@ public class TestBase extends Utils {
 		// Flush the data to report
 		ApplicationFilePath.report.flush();
 	}
-	}
-
-
+}

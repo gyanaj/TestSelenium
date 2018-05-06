@@ -15,7 +15,7 @@
 	</properties>
 
 	<build>
-		<pluginManagement>
+		<!-- <pluginManagement> -->
 		<plugins>
 			<!-- Compiler plug-in -->
 			<plugin>
@@ -117,7 +117,7 @@
 					<fileSets>
 					<fileSet>
 						<!-- Report directory Path -->
-						<directory>.//Reports//TestReport.html</directory>
+						<directory>.//Reports</directory>
 						<includes>
 							<!-- Report file name -->
 							<include>TestReport.html</include>
@@ -131,7 +131,7 @@
 			</executions>
 		</plugin>
 		</plugins>
-		 </pluginManagement> 
+		<!--  </pluginManagement>  -->
 	</build>
 
 	<dependencies>
